@@ -14,8 +14,8 @@ class Encoding
         }
 
         // suppress all notices since it isn't possible to silence only the
-        // notice "Wrong charset, conversion from $in_encoding to $out_encoding is not allowed"
-        set_error_handler(function () {}, E_NOTICE);
+        // Warning "Wrong charset, conversion from $in_encoding to $out_encoding is not allowed"
+        set_error_handler(function () {}, E_NOTICE|E_WARNING);
 
         // convert input to utf-8 and strip invalid characters
         $value = iconv($encoding, 'UTF-8//IGNORE', $input);
